@@ -19,8 +19,8 @@ export default defineConfig({
         navigateFallbackDenylist: [/^.*\.map$/],
       },
       manifest: {
-        name: "LA32R Instruction Statistics",
-        short_name: "LA32RIStats",
+        name: "la32r-instr-stats",
+        short_name: "la32r-istats",
         description:
           "Web app for collecting statistics over LoongArch32 Reduced binaries",
         theme_color: "#2196f3",
