@@ -341,7 +341,7 @@ const App = () => {
               JavaScript.
             </Typography>
             <Typography variant="body1" component="p">
-              For ELF files, we iterate over each <code>.text*</code> sections
+              For ELF files, we iterate over each <code>.text*</code> section
               and use a linear sweep to decode the instructions. For raw
               binaries, we just use a linear sweep.
             </Typography>
