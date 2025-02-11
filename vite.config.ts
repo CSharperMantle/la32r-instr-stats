@@ -24,6 +24,8 @@ export default defineConfig({
         description:
           "Web app for collecting statistics over LoongArch32 Reduced binaries",
         theme_color: "#2196f3",
+        display: "standalone",
+        orientation: "any",
         icons: [
           {
             src: "./web-app-manifest-192x192.png",
