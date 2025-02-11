@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [react(), wasm(), topLevelAwait()],
   build: {
     rollupOptions: {
-      treeshake: "smallest",
+      treeshake: "recommended",
     },
   },
 })

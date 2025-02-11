@@ -1,16 +1,9 @@
-#![no_std]
 #![deny(clippy::all)]
-
-extern crate alloc;
 
 mod decode;
 use decode::decode_instruction;
 use decode::InstructionCategory;
 
-use alloc::boxed::Box;
-use alloc::string::String;
-use alloc::string::ToString;
-use alloc::vec::Vec;
 use elf::abi::ET_EXEC;
 use elf::endian::AnyEndian;
 use elf::file::Class;
@@ -18,10 +11,6 @@ use elf::ElfBytes;
 use strum::IntoEnumIterator;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsValue;
-use wee_alloc::WeeAlloc;
-
-#[global_allocator]
-static ALLOC: WeeAlloc = WeeAlloc::INIT;
 
 #[wasm_bindgen(getter_with_clone)]
 pub struct WasmDecodedInstruction {

@@ -14,9 +14,9 @@ lto = true
 
 [dependencies]
 bitmatch = "0.1.1"
-elf = { version = "0.7.4", default-features = false, features = [] }
-js-sys = { version = "0.3.77", default-features = false, features = [] }
-strum = { version = "0.26.3", default-features = false, features = ["derive"] }
+elf = { version = "0.7.4", default-features = false, features = ["std"] }
+js-sys = { version = "0.3.77", default-features = false, features = ["std"] }
+strum = { version = "0.26.3", default-features = false, features = ["std", "derive"] }
 wasm-bindgen = "0.2.100"
-wasm-bindgen-futures = { version = "0.4.50", default-features = false, features = [] }
+wasm-bindgen-futures = { version = "0.4.50", default-features = false, features = ["std"] }
 wee_alloc = "0.4.5"
