@@ -59,10 +59,10 @@ pub async fn decode_elf_instructions(
     .filter_map(|hdr| {
       if strtab.get(hdr.sh_name as usize).ok()?.starts_with(".text") {
         let (bytes, compression) = elf_obj.section_data(&hdr).ok()?;
-        return match compression {
+        match compression {
           None => Some(decode_raw(bytes)),
           Some(_) => None,
-        };
+        }
       } else {
         None
       }
