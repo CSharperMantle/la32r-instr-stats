@@ -412,6 +412,7 @@ const App = () => {
         open={needRefresh}
         onConfirm={async () => {
           await updateServiceWorker(true)
+          setNeedRefresh(false)
         }}
         onCancel={() => {
           setNeedRefresh(false)
