@@ -171,9 +171,12 @@ const App = () => {
                     onClick={async () => {
                       try {
                         setAttempted(true)
-                        const file = await inputRef.current?.files
-                          ?.item(0)
-                          ?.bytes()
+                        const file = new Uint8Array(
+                          (await inputRef.current?.files
+                            ?.item(0)
+                            ?.arrayBuffer()) ?? new ArrayBuffer()
+                        )
+                        
                         if (!file) {
                           throw new Error("No file selected.")
                         }
