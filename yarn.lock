@@ -4656,6 +4656,7 @@ __metadata:
     vite-plugin-pwa: "npm:^0.21.1"
     vite-plugin-top-level-await: "npm:^1.4.4"
     vite-plugin-wasm: "npm:^3.4.1"
+    workbox-window: "npm:^7.3.0"
   languageName: unknown
   linkType: soft
 

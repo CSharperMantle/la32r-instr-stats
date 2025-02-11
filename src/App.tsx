@@ -3,7 +3,13 @@ import { useEffect, useId, useRef, useState } from "react"
 import DeleteIcon from "@mui/icons-material/Delete"
 import FileOpenIcon from "@mui/icons-material/FileOpen"
 import FunctionsIcon from "@mui/icons-material/Functions"
+import Button from "@mui/material/Button"
 import Container from "@mui/material/Container"
+import Dialog from "@mui/material/Dialog"
+import DialogActions from "@mui/material/DialogActions"
+import DialogContent from "@mui/material/DialogContent"
+import DialogContentText from "@mui/material/DialogContentText"
+import DialogTitle from "@mui/material/DialogTitle"
 import Divider from "@mui/material/Divider"
 import FormControl from "@mui/material/FormControl"
 import Grid from "@mui/material/Grid2"
@@ -26,6 +32,7 @@ import Typography from "@mui/material/Typography"
 
 import { sortBy } from "lodash-es"
 import { useSnackbar } from "notistack"
+import { useRegisterSW } from "virtual:pwa-register/react"
 
 import {
   decodeBinInstructions,
@@ -33,6 +40,36 @@ import {
   getInstructionCategories,
 } from "../wasm/pkg"
 import ExternalError from "./ExternalError"
+
+const UpdateDialog = (props: {
+  open: boolean
+  onConfirm: () => void
+  onCancel: () => void
+}) => {
+  const titleId = useId()
+  const descriptionId = useId()
+
+  return (
+    <Dialog
+      open={props.open}
+      aria-labelledby={titleId}
+      aria-describedby={descriptionId}
+    >
+      <DialogTitle id={titleId}>Update</DialogTitle>
+      <DialogContent>
+        <DialogContentText id={descriptionId}>
+          A new version of this app is available. Refresh to update?
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={props.onCancel}>Cancel</Button>
+        <Button onClick={props.onConfirm} autoFocus>
+          OK
+        </Button>
+      </DialogActions>
+    </Dialog>
+  )
+}
 
 const TablePaper = (props: any) => (
   <Paper variant="elevation" elevation={2} {...props} />
@@ -51,6 +88,19 @@ const App = () => {
   const [instrStats, setInstrStats] = useState<InstrStatsArray>([])
   const [categories, setCategories] = useState<{ [key: number]: string }>({})
   const [attempted, setAttempted] = useState(false)
+  const [updateDialogOpen, setUpdateDialogOpen] = useState(false)
+
+  useRegisterSW({
+    onNeedRefresh() {
+      setUpdateDialogOpen(true)
+    },
+    onOfflineReady() {
+      enqueueSnackbar({
+        message: "This app is ready to work offline.",
+        variant: "info",
+      })
+    },
+  })
 
   useEffect(() => {
     const func = async () => {
@@ -176,7 +226,7 @@ const App = () => {
                             ?.item(0)
                             ?.arrayBuffer()) ?? new ArrayBuffer()
                         )
-                        
+
                         if (!file) {
                           throw new Error("No file selected.")
                         }
@@ -347,6 +397,16 @@ const App = () => {
           </Stack>
         </Stack>
       </Container>
+      <UpdateDialog
+        open={updateDialogOpen}
+        onConfirm={() => {
+          setUpdateDialogOpen(false)
+          window.location.reload()
+        }}
+        onCancel={() => {
+          setUpdateDialogOpen(false)
+        }}
+      />
     </>
   )
 }
