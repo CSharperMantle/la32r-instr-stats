@@ -23,7 +23,7 @@ export default defineConfig({
       },
       manifest: {
         name: "LA32R Instruction Statistics",
-        short_name: "LA32R Instr Stats",
+        short_name: "LA32RIStats",
         description:
           "Web app for collecting statistics over LoongArch32 Reduced binaries",
         theme_color: "#2196f3",
