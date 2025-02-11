@@ -55,7 +55,7 @@ const UpdateDialog = (props: {
       aria-labelledby={titleId}
       aria-describedby={descriptionId}
     >
-      <DialogTitle id={titleId}>Update</DialogTitle>
+      <DialogTitle id={titleId}>Apply updates?</DialogTitle>
       <DialogContent>
         <DialogContentText id={descriptionId}>
           A new version of this app is available. Refresh to update?
