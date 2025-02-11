@@ -8,6 +8,7 @@
     "wasm": "wasm-pack build --release ./wasm",
     "dev": "yarn wasm && vite",
     "build": "yarn wasm && tsc -b && vite build",
+    "build-pages": "yarn wasm && tsc -b && vite build --base=/la32r-instr-stats/",
     "lint": "eslint .",
     "preview": "yarn wasm && vite preview"
   },
