@@ -164,7 +164,11 @@ const App = () => {
                     <FileOpenIcon />
                     <input
                       type="file"
-                      accept="application/octet-stream"
+                      accept={
+                        fileType === "elf" ?
+                          ".elf,application/x-elf,application/octet-stream"
+                        : "application/octet-stream"
+                      }
                       ref={inputRef}
                       onChange={(ev) => {
                         setFileName(ev.target.files?.[0].name ?? "")
@@ -241,10 +245,17 @@ const App = () => {
                         if (!file) {
                           throw new Error("No file selected.")
                         }
-                        const instructions =
-                          fileType === "bin" ?
-                            await decodeBinInstructions(file)
-                          : await decodeElfInstructions(file)
+                        let instructions
+                        switch (fileType) {
+                          case "bin":
+                            instructions = await decodeBinInstructions(file)
+                            break
+                          case "elf":
+                            instructions = await decodeElfInstructions(file)
+                            break
+                          default:
+                            throw new Error(`Invalid file type: ${fileType}`)
+                        }
                         const stats: InstrStatsDict = {}
                         for (const instr of instructions) {
                           if (instr.mnemonic in stats) {
