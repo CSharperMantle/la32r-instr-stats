@@ -20,6 +20,9 @@ const theme = createTheme({
       "sans-serif",
     ].join(","),
   },
+  colorSchemes: {
+    dark: true,
+  },
 })
 
 export default theme
