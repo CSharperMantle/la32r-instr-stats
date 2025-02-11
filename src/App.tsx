@@ -88,19 +88,30 @@ const App = () => {
   const [instrStats, setInstrStats] = useState<InstrStatsArray>([])
   const [categories, setCategories] = useState<{ [key: number]: string }>({})
   const [attempted, setAttempted] = useState(false)
-  const [updateDialogOpen, setUpdateDialogOpen] = useState(false)
 
-  useRegisterSW({
-    onNeedRefresh() {
-      setUpdateDialogOpen(true)
-    },
-    onOfflineReady() {
-      enqueueSnackbar({
-        message: "This app is ready to work offline.",
-        variant: "info",
-      })
+  const {
+    offlineReady: [offlineReady, setOfflineReady],
+    needRefresh: [needRefresh, setNeedRefresh],
+    updateServiceWorker,
+  } = useRegisterSW({
+    onRegisterError(e) {
+      enqueueSnackbar(
+        `Service worker registration failed: ${e}. Offline cache will not work.`,
+        {
+          variant: "warning",
+        }
+      )
     },
   })
+
+  useEffect(() => {
+    if (offlineReady) {
+      enqueueSnackbar("App is ready for offline use.", {
+        variant: "info",
+      })
+      setOfflineReady(false)
+    }
+  }, [offlineReady])
 
   useEffect(() => {
     const func = async () => {
@@ -398,13 +409,12 @@ const App = () => {
         </Stack>
       </Container>
       <UpdateDialog
-        open={updateDialogOpen}
-        onConfirm={() => {
-          setUpdateDialogOpen(false)
-          window.location.reload()
+        open={needRefresh}
+        onConfirm={async () => {
+          await updateServiceWorker(true)
         }}
         onCancel={() => {
-          setUpdateDialogOpen(false)
+          setNeedRefresh(false)
         }}
       />
     </>
