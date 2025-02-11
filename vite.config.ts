@@ -15,7 +15,8 @@ export default defineConfig({
       injectRegister: "auto",
       strategies: "generateSW",
       workbox: {
-        globPatterns: ["**/*.{html,js,css,json,wasm}"],
+        globPatterns: ["**/*.{html,js,css,wasm}", "**/*.{png,svg,txt}"],
+        navigateFallbackAllowlist: [/^.*\.map$/],
       },
       manifest: {
         name: "LA32R Instruction Statistics",
