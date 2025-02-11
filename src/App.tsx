@@ -182,12 +182,8 @@ const App = () => {
                         }
                         const instructions =
                           fileType === "bin" ?
-                            await decodeBinInstructions(
-                              file ?? new Uint8Array()
-                            )
-                          : await decodeElfInstructions(
-                              file ?? new Uint8Array()
-                            )
+                            await decodeBinInstructions(file)
+                          : await decodeElfInstructions(file)
                         const stats: InstrStatsDict = {}
                         for (const instr of instructions) {
                           if (instr.mnemonic in stats) {
