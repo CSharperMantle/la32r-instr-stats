@@ -65,7 +65,7 @@ const App = () => {
   return (
     <>
       <Container
-        maxWidth="sm"
+        maxWidth="md"
         sx={{
           padding: "1rem",
         }}
@@ -269,7 +269,7 @@ const App = () => {
                         }}
                       >
                         <TableCell component="th" scope="row">
-                          {mnemonic}
+                          <code>{mnemonic}</code>
                         </TableCell>
                         <TableCell>{data.category}</TableCell>
                         <TableCell>{data.count}</TableCell>
