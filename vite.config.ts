@@ -16,7 +16,7 @@ export default defineConfig({
       strategies: "generateSW",
       workbox: {
         globPatterns: ["**/*.{html,js,css,wasm}", "**/*.{png,svg,txt}"],
-        navigateFallbackAllowlist: [/^.*\.map$/],
+        navigateFallbackDenylist: [/^.*\.map$/],
       },
       manifest: {
         name: "LA32R Instruction Statistics",
