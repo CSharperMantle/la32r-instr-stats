@@ -10,7 +10,9 @@
   "typescript.tsdk": ".yarn/sdks/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "editor.tabSize": 2,
-  "editor.rulers": [100],
+  "editor.rulers": [
+    100
+  ],
   "[toml]": {
     "editor.formatOnSave": false
   }
