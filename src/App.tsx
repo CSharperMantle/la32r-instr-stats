@@ -171,7 +171,7 @@ const App = () => {
                       }
                       ref={inputRef}
                       onChange={(ev) => {
-                        setFileName(ev.target.files?.[0].name ?? "")
+                        setFileName(ev.target.files?.[0]?.name ?? "")
                       }}
                       style={{
                         display: "none",
