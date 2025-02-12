@@ -71,6 +71,46 @@ const UpdateDialog = (props: {
   )
 }
 
+const LicenseSection = () => {
+  return (
+    <Stack direction="column" spacing={2} component="section">
+      <Typography variant="h5" component="h2">
+        License
+      </Typography>
+      <Typography variant="body1" component="p">
+        Copyright &copy; 2025 Rong "Mantle" Bao {"<"}
+        <Link href="mailto:webmaster@csmantle.top">webmaster@csmantle.top</Link>
+        {">"}.
+      </Typography>
+      <Typography variant="body1" component="p">
+        This program is free software: you can redistribute it and/or modify it
+        under the terms of the GNU Affero General Public License as published by
+        the Free Software Foundation, either version 3 of the License, or (at
+        your option) any later version.
+      </Typography>
+      <Typography variant="body1" component="p">
+        This program is distributed in the hope that it will be useful, but{" "}
+        <strong>WITHOUT ANY WARRANTY</strong>; without even the implied warranty
+        of <strong>MERCHANTABILITY</strong> or{" "}
+        <strong>FITNESS FOR A PARTICULAR PURPOSE</strong>. See the GNU Affero
+        General Public License for more details.
+      </Typography>
+      <Typography variant="body1" component="p">
+        You should have received a copy of the GNU Affero General Public License
+        along with this program. If not, see{" "}
+        <Link
+          href="https://www.gnu.org/licenses/"
+          target="_blank"
+          rel="noopener"
+        >
+          https://www.gnu.org/licenses/
+        </Link>
+        .
+      </Typography>
+    </Stack>
+  )
+}
+
 const TablePaper = (props: any) => (
   <Paper variant="elevation" elevation={2} {...props} />
 )
@@ -379,44 +419,7 @@ const App = () => {
               .
             </Typography>
           </Stack>
-          <Stack direction="column" spacing={2} component="section">
-            <Typography variant="h5" component="h2">
-              License
-            </Typography>
-            <Typography variant="body1" component="p">
-              Copyright &copy; 2025 Rong "Mantle" Bao {"<"}
-              <Link href="mailto:webmaster@csmantle.top">
-                webmaster@csmantle.top
-              </Link>
-              {">"}.
-            </Typography>
-            <Typography variant="body1" component="p">
-              This program is free software: you can redistribute it and/or
-              modify it under the terms of the GNU Affero General Public License
-              as published by the Free Software Foundation, either version 3 of
-              the License, or (at your option) any later version.
-            </Typography>
-            <Typography variant="body1" component="p">
-              This program is distributed in the hope that it will be useful,
-              but <strong>WITHOUT ANY WARRANTY</strong>; without even the
-              implied warranty of
-              <strong>MERCHANTABILITY</strong> or{" "}
-              <strong>FITNESS FOR A PARTICULAR PURPOSE</strong>. See the GNU
-              Affero General Public License for more details.
-            </Typography>
-            <Typography variant="body1" component="p">
-              You should have received a copy of the GNU Affero General Public
-              License along with this program. If not, see{" "}
-              <Link
-                href="https://www.gnu.org/licenses/"
-                target="_blank"
-                rel="noopener"
-              >
-                https://www.gnu.org/licenses/
-              </Link>
-              .
-            </Typography>
-          </Stack>
+          <LicenseSection />
         </Stack>
       </Container>
       <UpdateDialog
