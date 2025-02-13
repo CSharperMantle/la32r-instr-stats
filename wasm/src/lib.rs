@@ -1,4 +1,5 @@
 #![deny(clippy::all)]
+#![deny(clippy::std_instead_of_alloc)]
 
 mod decode;
 use decode::decode_instruction;
