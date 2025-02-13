@@ -1,9 +1,16 @@
+#![no_std]
 #![deny(clippy::all)]
 #![deny(clippy::std_instead_of_alloc)]
 
 mod decode;
 use decode::decode_instruction;
 use decode::InstructionCategory;
+
+extern crate alloc;
+use alloc::boxed::Box;
+use alloc::string::String;
+use alloc::string::ToString;
+use alloc::vec::Vec;
 
 use elf::abi::ET_EXEC;
 use elf::endian::AnyEndian;
@@ -12,6 +19,9 @@ use elf::ElfBytes;
 use strum::IntoEnumIterator;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsValue;
+
+#[global_allocator]
+static ALLOCATOR: talc::TalckWasm = unsafe { talc::TalckWasm::new_global() };
 
 #[wasm_bindgen(getter_with_clone)]
 pub struct WasmDecodedInstruction {
