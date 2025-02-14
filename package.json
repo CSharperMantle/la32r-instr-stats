@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "type": "module",
   "license": "AGPL-3.0-or-later",
-  "description": "Web app for collecting statistics over LoongArch32 Reduced binaries",
+  "description": "Web app for collecting statistics over LoongArch32 Reduced binaries.",
   "scripts": {
     "wasm": "wasm-pack build --release ./wasm",
     "dev": "yarn wasm && vite",
