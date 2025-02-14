@@ -30,6 +30,7 @@ import TextField from "@mui/material/TextField"
 import Tooltip from "@mui/material/Tooltip"
 import Typography from "@mui/material/Typography"
 
+import { styled, useTheme } from "@mui/material"
 import { sortBy } from "lodash-es"
 import { useSnackbar } from "notistack"
 import { useRegisterSW } from "virtual:pwa-register/react"
@@ -115,9 +116,17 @@ const TablePaper = (props: any) => (
   <Paper variant="elevation" elevation={2} {...props} />
 )
 
+const CenteringGrid = styled(Grid)(() => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+}))
+
 const App = () => {
   type InstrStatsDict = { [key: string]: { category: string; count: number } }
   type InstrStatsArray = [string, { category: string; count: number }][]
+
+  const theme = useTheme()
 
   const { enqueueSnackbar } = useSnackbar()
 
@@ -167,35 +176,39 @@ const App = () => {
     <>
       <Container
         maxWidth="md"
+        component="main"
         sx={{
-          padding: "1rem",
+          padding: theme.spacing(3),
         }}
       >
         <Stack direction="column" spacing={4}>
-          <Typography variant="h4" component="h1" textAlign="center">
-            la32r-instr-stats
+          <Typography
+            variant="h4"
+            component="h1"
+            sx={{
+              textAlign: "center",
+            }}
+          >
+            LA32R Instruction Statistics
+          </Typography>
+          <Typography variant="body1" component="p">
+            This web app collects and displays statistics about instructions
+            found in the provided LoongArch32 Reduced ELF executable or raw
+            opcode binary.
           </Typography>
           <Divider />
           <Stack direction="column" spacing={2} component="section">
-            <Typography variant="body1" component="p">
-              This web app collects and displays statistics about instructions
-              found in the provided LoongArch32 Reduced ELF executable or raw
-              opcode binary.
-            </Typography>
             <Grid
               container
               columnSpacing={2}
               rowSpacing={1}
               columns={{ xs: 4, md: 8 }}
-              alignItems="center"
-              justifyContent="space-between"
+              sx={{
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
             >
-              <Grid
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                size={1}
-              >
+              <CenteringGrid size={1}>
                 <Tooltip title="Open">
                   <IconButton
                     size="large"
@@ -219,13 +232,8 @@ const App = () => {
                     />
                   </IconButton>
                 </Tooltip>
-              </Grid>
-              <Grid
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                size={3}
-              >
+              </CenteringGrid>
+              <CenteringGrid size={3}>
                 <TextField
                   fullWidth
                   label="File name"
@@ -241,13 +249,8 @@ const App = () => {
                   }}
                   variant="filled"
                 />
-              </Grid>
-              <Grid
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                size={2}
-              >
+              </CenteringGrid>
+              <CenteringGrid size={2}>
                 <FormControl fullWidth variant="filled">
                   <InputLabel id={fileTypeInputLabelId}>File type</InputLabel>
                   <Select
@@ -262,13 +265,8 @@ const App = () => {
                     <MenuItem value={"bin"}>Binary</MenuItem>
                   </Select>
                 </FormControl>
-              </Grid>
-              <Grid
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                size={1}
-              >
+              </CenteringGrid>
+              <CenteringGrid size={1}>
                 <Tooltip title="Calculate">
                   <IconButton
                     size="large"
@@ -326,13 +324,8 @@ const App = () => {
                     <FunctionsIcon />
                   </IconButton>
                 </Tooltip>
-              </Grid>
-              <Grid
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                size={1}
-              >
+              </CenteringGrid>
+              <CenteringGrid size={1}>
                 <Tooltip title="Clear">
                   <IconButton
                     size="large"
@@ -348,7 +341,7 @@ const App = () => {
                     <DeleteIcon />
                   </IconButton>
                 </Tooltip>
-              </Grid>
+              </CenteringGrid>
             </Grid>
             <TableContainer component={TablePaper}>
               <Table>
