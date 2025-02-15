@@ -16,7 +16,8 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@fontsource-variable/noto-sans": "^5.1.1",
+    "@fontsource-variable/source-code-pro": "^5.1.1",
+    "@fontsource-variable/source-sans-3": "^5.1.1",
     "@mui/icons-material": "^6.4.3",
     "@mui/material": "^6.4.3",
     "lodash-es": "^4.17.21",
