@@ -7,11 +7,11 @@
   "description": "Web app for collecting statistics over LoongArch32 Reduced binaries.",
   "scripts": {
     "wasm": "wasm-pack build --release ./wasm",
-    "dev": "yarn wasm && vite",
-    "build": "yarn wasm && tsc -b && vite build",
-    "build-pages": "yarn wasm && tsc -b && vite build --base=https://csmantle.top/la32r-instr-stats/",
+    "dev": "yarn wasm && vike dev",
+    "build": "yarn wasm && tsc -b && vike build",
+    "build-pages": "yarn wasm && tsc -b && vike build --base=https://csmantle.top/la32r-instr-stats/",
     "lint": "eslint .",
-    "preview": "yarn wasm && vite preview"
+    "preview": "yarn build && vike preview"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -23,7 +23,9 @@
     "lodash-es": "^4.17.21",
     "notistack": "^3.0.2",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "vike": "^0.4.229",
+    "vike-react": "^0.6.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.1",

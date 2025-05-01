@@ -39,8 +39,8 @@ import {
   decodeBinInstructions,
   decodeElfInstructions,
   getInstructionCategories,
-} from "../wasm/pkg"
-import ExternalError from "./ExternalError"
+} from "../../wasm/pkg/la32r_instr_stats_wasm"
+import ExternalError from "../ExternalError"
 
 const UpdateDialog = (props: {
   open: boolean
@@ -122,7 +122,7 @@ const CenteringGrid = styled(Grid)(() => ({
   alignItems: "center",
 }))
 
-const App = () => {
+const Page = () => {
   type InstrStatsDict = { [key: string]: { category: string; count: number } }
   type InstrStatsArray = [string, { category: string; count: number }][]
 
@@ -237,7 +237,7 @@ const App = () => {
                 <TextField
                   fullWidth
                   label="File name"
-                  value={fileName}
+                  value={fileName ?? ""}
                   error={attempted && !fileName}
                   slotProps={{
                     input: {
@@ -429,4 +429,4 @@ const App = () => {
   )
 }
 
-export default App
+export default Page
