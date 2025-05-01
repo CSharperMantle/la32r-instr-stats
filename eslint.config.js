@@ -28,6 +28,8 @@ export default tseslint.config(
         "warn",
         { allowConstantExport: true },
       ],
+      "react/jsx-uses-react": "off",
+      "react/react-in-jsx-scope": "off",
     },
   }
 )

@@ -20,34 +20,7 @@ export default defineConfig({
         globPatterns: ["**/*.{html,js,css,wasm}", "**/*.{png,svg,txt}"],
         navigateFallbackDenylist: [/^.*\.map$/],
       },
-      manifest: {
-        name: "LA32R Instruction Statistics",
-        short_name: "la32r-istats",
-        description:
-          "Web app for collecting statistics over LoongArch32 Reduced binaries",
-        theme_color: "#2196f3",
-        display: "standalone",
-        orientation: "any",
-        icons: [
-          {
-            src: "./web-app-manifest-192x192.png",
-            sizes: "192x192",
-            type: "image/png",
-          },
-          {
-            src: "./web-app-manifest-512x512.png",
-            sizes: "512x512",
-            type: "image/png",
-            purpose: "any",
-          },
-          {
-            src: "./web-app-manifest-512x512.png",
-            sizes: "512x512",
-            type: "image/png",
-            purpose: "maskable",
-          },
-        ],
-      },
+      manifest: false,
     }),
   ],
   build: {
