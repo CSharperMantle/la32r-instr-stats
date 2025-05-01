@@ -12,7 +12,7 @@ export function Head() {
       <link rel="shortcut icon" href={faviconIco} />
       <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon} />
       <meta name="theme-color" content="#2196f3" />
-      <meta property="og:title" content="LA32R Instruction Statistics" />
+      {/* <meta property="og:title" content="LA32R Instruction Statistics" /> */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={import.meta.env.BASE_URL} />
       {/* <meta property="og:image" content="/social-banner.svg" /> - config.ts */}
