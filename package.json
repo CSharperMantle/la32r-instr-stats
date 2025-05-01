@@ -9,7 +9,7 @@
     "wasm": "wasm-pack build --release ./wasm",
     "dev": "yarn wasm && vike dev",
     "build": "yarn wasm && tsc -b && vike build",
-    "lint": "eslint .",
+    "lint": "tsc --noEmit --checkJs --strict && eslint .",
     "preview": "yarn build && vike preview"
   },
   "dependencies": {

@@ -17,7 +17,7 @@ import IconButton from "@mui/material/IconButton"
 import InputLabel from "@mui/material/InputLabel"
 import Link from "@mui/material/Link"
 import MenuItem from "@mui/material/MenuItem"
-import Paper from "@mui/material/Paper"
+import Paper, { PaperProps } from "@mui/material/Paper"
 import Select from "@mui/material/Select"
 import Stack from "@mui/material/Stack"
 import Table from "@mui/material/Table"
@@ -112,8 +112,7 @@ const LicenseSection = () => {
   )
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const TablePaper = (props: any) => (
+const TablePaper = (props: PaperProps) => (
   <Paper variant="elevation" elevation={2} {...props} />
 )
 
