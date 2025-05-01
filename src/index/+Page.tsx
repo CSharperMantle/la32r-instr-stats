@@ -79,7 +79,7 @@ const LicenseSection = () => {
         License
       </Typography>
       <Typography variant="body1" component="p">
-        Copyright &copy; 2025 Rong &quot;Mantle&quot; Bao {"<"}
+        Copyright &copy; 2025 Rong &ldquo;Mantle&rdquo; Bao {"<"}
         <Link href="mailto:webmaster@csmantle.top">webmaster@csmantle.top</Link>
         {">"}.
       </Typography>
