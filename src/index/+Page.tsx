@@ -112,6 +112,7 @@ const LicenseSection = () => {
   )
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const TablePaper = (props: any) => (
   <Paper variant="elevation" elevation={2} {...props} />
 )

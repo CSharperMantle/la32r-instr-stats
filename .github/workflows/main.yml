@@ -33,6 +33,8 @@ jobs:
           version: 'latest'
       - name: Install dependencies
         run: yarn install --immutable
+      - name: Lint
+        run: yarn lint
       - name: Build
         env:
           VITE_CONFIG: "{'base':'https://csmantle.top/la32r-instr-stats/'}"
