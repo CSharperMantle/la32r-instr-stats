@@ -6,15 +6,13 @@ import globals from "globals"
 import tseslint from "typescript-eslint"
 
 export default tseslint.config(
-  { ignores: ["dist"] },
+  { ignores: ["dist", ".yarn", "wasm", "**/.pnp*"] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
       ecmaVersion: 2020,
       globals: globals.browser,
-      tsconfigRootDir: import.meta.url,
     },
     plugins: {
       react: react,
@@ -22,7 +20,7 @@ export default tseslint.config(
       "react-refresh": reactRefresh,
     },
     rules: {
-      ...tseslint.configs.strictTypeChecked,
+      ...tseslint.configs.strictTypeChecked.rules,
       ...tseslint.configs.stylisticTypeChecked.rules,
       ...react.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
