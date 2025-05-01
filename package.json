@@ -9,7 +9,6 @@
     "wasm": "wasm-pack build --release ./wasm",
     "dev": "yarn wasm && vike dev",
     "build": "yarn wasm && tsc -b && vike build",
-    "build-pages": "yarn wasm && tsc -b && vike build --base=https://csmantle.top/la32r-instr-stats/",
     "lint": "eslint .",
     "preview": "yarn build && vike preview"
   },

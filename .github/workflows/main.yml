@@ -34,7 +34,9 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
       - name: Build
-        run: yarn build-pages
+        env:
+          VITE_CONFIG: "{'base':'https://csmantle.top/la32r-instr-stats/'}"
+        run: yarn build
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
