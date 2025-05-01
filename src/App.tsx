@@ -12,7 +12,7 @@ import DialogContentText from "@mui/material/DialogContentText"
 import DialogTitle from "@mui/material/DialogTitle"
 import Divider from "@mui/material/Divider"
 import FormControl from "@mui/material/FormControl"
-import Grid from "@mui/material/Grid2"
+import Grid from "@mui/material/Grid"
 import IconButton from "@mui/material/IconButton"
 import InputLabel from "@mui/material/InputLabel"
 import Link from "@mui/material/Link"
@@ -79,7 +79,7 @@ const LicenseSection = () => {
         License
       </Typography>
       <Typography variant="body1" component="p">
-        Copyright &copy; 2025 Rong "Mantle" Bao {"<"}
+        Copyright &copy; 2025 Rong &quot;Mantle&quot; Bao {"<"}
         <Link href="mailto:webmaster@csmantle.top">webmaster@csmantle.top</Link>
         {">"}.
       </Typography>
@@ -160,7 +160,7 @@ const App = () => {
       })
       setOfflineReady(false)
     }
-  }, [offlineReady])
+  }, [offlineReady, enqueueSnackbar, setOfflineReady])
 
   useEffect(() => {
     const func = async () => {
@@ -310,12 +310,12 @@ const App = () => {
                         )
                       } catch (err) {
                         console.error(err)
-                        err =
+                        const wrappedErr =
                           err instanceof Error ? err : (
                             new ExternalError(`${err}`, err)
                           )
                         enqueueSnackbar({
-                          message: `${err}`,
+                          message: `${wrappedErr}`,
                           variant: "error",
                         })
                       }
